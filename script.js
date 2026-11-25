@@ -107,6 +107,12 @@ const formStatus = document.getElementById("formStatus");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  // Sécurité : tant que l'adresse de réception est provisoire, on n'envoie rien.
+  if (RSVP_EMAIL.endsWith("@exemple.fr")) {
+    formStatus.textContent = "Le formulaire sera bientôt disponible. Merci de votre patience !";
+    return;
+  }
+
   if (!form.checkValidity()) {
     formStatus.textContent = "Il manque votre nom ou votre réponse.";
     form.reportValidity();
