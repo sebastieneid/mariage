@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Albert+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="style.css">
   <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
 </head>
@@ -87,10 +88,10 @@
           </div>
         </li>
         <li class="timeline__row reveal">
-          <time class="timeline__time">17h30</time>
+          <span class="timeline__time">Puis</span>
           <div>
             <h3>Vin d'honneur</h3>
-            <p>À La Colonie, à Berry-Bouy, à une vingtaine de minutes de route de l'église.</p>
+            <p>À l'issue de la messe, on se retrouve à La Colonie, à Berry-Bouy, à une vingtaine de minutes de route de l'église.</p>
           </div>
         </li>
         <li class="timeline__row reveal">
@@ -126,7 +127,7 @@
         </article>
 
         <article class="place reveal">
-          <p class="kicker">Dès 17h30 &nbsp;·&nbsp; Réception</p>
+          <p class="kicker">À la suite de la messe &nbsp;·&nbsp; Réception</p>
           <h3>La Colonie</h3>
           <p class="venue__address">Lieu-dit La Colonie<br>18500 Berry-Bouy</p>
           <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=47.119256,2.316309" target="_blank" rel="noopener">Voir l'itinéraire</a>
@@ -149,17 +150,38 @@
           <p>Bourges est accessible en train et par l'A71. Entre l'église et La Colonie, comptez une vingtaine de minutes en voiture : le covoiturage est vivement encouragé.</p>
         </article>
         <article class="info reveal">
-          <h3>Dormir</h3>
-          <p>On vous enverra une liste d'hôtels et de gîtes à Bourges et aux alentours de Berry-Bouy.</p>
-        </article>
-        <article class="info reveal">
-          <h3>S'habiller</h3>
-          <p>Venez comme vous vous sentez beaux. Une touche de prune nous fera plaisir, mais rien d'obligatoire.</p>
-        </article>
-        <article class="info reveal">
           <h3>Les enfants</h3>
           <p>Ils sont les bienvenus. Dites-le nous dans le formulaire pour qu'on prévoie ce qu'il faut.</p>
         </article>
+      </div>
+
+      <!-- Dormir : carte des hébergements (données : data/hebergements.js) -->
+      <div class="feature" id="dormir">
+        <div class="feature__text reveal">
+          <h3>Dormir</h3>
+          <p>Gîtes, chambres d'hôtes et hôtels autour de La Colonie. Cliquez sur un point pour accéder au site de l'hébergement.</p>
+          <ul class="legend">
+            <li><span class="legend__dot legend__dot--venue"></span>Les lieux du mariage</li>
+            <li><span class="legend__dot"></span>Hébergements</li>
+          </ul>
+          <p class="feature__note">Liste indicative et non exhaustive, issue d'OpenStreetMap. Distances à vol d'oiseau depuis La Colonie.</p>
+        </div>
+        <div class="feature__map reveal">
+          <div class="map" id="map" role="region" aria-label="Carte des hébergements autour de La Colonie"></div>
+          <details class="lodging">
+            <summary>Voir la liste des hébergements</summary>
+            <ol class="lodging__list" id="lodgingList"></ol>
+          </details>
+        </div>
+      </div>
+
+      <!-- S'habiller : tableau d'inspirations (contenu : inspirations.js) -->
+      <div class="feature feature--stack" id="tenue">
+        <div class="feature__text reveal">
+          <h3>S'habiller</h3>
+          <p>Venez comme vous vous sentez beaux. Une touche de prune nous fera plaisir, mais rien d'obligatoire. Quelques inspirations pour vous guider :</p>
+        </div>
+        <div class="mood reveal" id="moodboard"></div>
       </div>
     </section>
 
@@ -168,7 +190,7 @@
       <header class="rsvp__head">
         <p class="kicker kicker--light reveal">IV &nbsp;—&nbsp; Réponse</p>
         <h2 class="section__title section__title--light reveal">Serez-vous <em>des nôtres&nbsp;?</em></h2>
-        <p class="rsvp__deadline reveal">Merci de nous répondre avant le 28 février 2027.</p>
+        <p class="rsvp__deadline reveal">Merci de nous répondre avant le 28&nbsp;février 2027.</p>
       </header>
 
       <form class="form reveal" id="rsvpForm" novalidate>
@@ -208,6 +230,9 @@
     <!-- <p class="footer__contact">Une question ? <a href="mailto:ADRESSE">ADRESSE</a></p> -->
   </footer>
 
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="data/hebergements.js"></script>
+  <script src="inspirations.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

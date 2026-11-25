@@ -514,6 +514,209 @@ em { font-style: italic; }
 
 .info p { color: var(--muted); }
 
+/* Blocs pleine largeur : Dormir (carte) et S'habiller (inspirations) */
+.feature {
+  max-width: 60rem;
+  margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.feature--stack { grid-template-columns: 1fr; gap: 2rem; }
+.feature--stack .feature__text { max-width: 36rem; }
+
+.feature h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+.feature__text > p { color: var(--muted); }
+
+.feature__note {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.legend {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.legend li { display: flex; align-items: center; gap: 0.7rem; }
+.legend__dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--plum);
+  box-shadow: 0 0 0 2px var(--ivory), 0 0 0 3px rgba(91, 31, 76, 0.35);
+}
+.legend__dot--venue {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 0;
+  transform: rotate(45deg);
+  background: var(--plum-night);
+}
+
+/* Carte */
+.map {
+  height: clamp(22rem, 55vh, 32rem);
+  background: var(--stone);
+  border: 1px solid var(--line);
+  font-family: var(--sans);
+  z-index: 0;
+}
+.map .leaflet-tile-pane { filter: sepia(0.08) saturate(0.8); }
+
+.pin {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--plum);
+  border: 2px solid var(--ivory);
+  box-shadow: 0 1px 4px rgba(38, 21, 33, 0.35);
+  transition: transform 0.25s var(--ease);
+}
+.pin:hover, .leaflet-marker-icon:focus .pin { transform: scale(1.35); }
+
+.venue-pin { position: relative; }
+.venue-pin__mark {
+  position: absolute;
+  left: 3px; top: 3px;
+  width: 14px;
+  height: 14px;
+  background: var(--plum-night);
+  border: 2px solid var(--ivory);
+  transform: rotate(45deg);
+  box-shadow: 0 1px 4px rgba(38, 21, 33, 0.4);
+}
+.venue-pin__label {
+  position: absolute;
+  left: 26px;
+  top: -2px;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--plum-night);
+  text-shadow: 0 0 3px var(--ivory), 0 0 3px var(--ivory), 0 0 6px var(--ivory);
+}
+
+.map .leaflet-popup-content-wrapper {
+  border-radius: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  box-shadow: 0 6px 24px rgba(38, 21, 33, 0.18);
+}
+.map .leaflet-popup-tip { background: var(--ivory); }
+.map .leaflet-popup-content { margin: 1rem 1.25rem 1.1rem; font-size: 0.95rem; line-height: 1.5; }
+.popup__type {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+.popup__name {
+  margin: 0.2rem 0 0.25rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+.popup__meta { color: var(--muted); font-size: 0.85rem; }
+.map .leaflet-popup-content a.popup__link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.2rem;
+}
+.map .leaflet-popup-content a.popup__link:hover { color: var(--plum); border-color: var(--plum); }
+.map .leaflet-bar a { border-radius: 0 !important; color: var(--ink); }
+.map .leaflet-control-attribution { font-size: 0.68rem; background: rgba(248, 245, 240, 0.85); }
+
+/* Liste dépliable sous la carte */
+.lodging { margin-top: 1rem; }
+.lodging summary {
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  list-style: none;
+}
+.lodging summary::-webkit-details-marker { display: none; }
+.lodging summary::after { content: " +"; color: var(--plum); }
+.lodging[open] summary::after { content: " –"; }
+.lodging__list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.lodging__list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+.lodging__list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.lodging__list a:hover { border-color: var(--ink); }
+.lodging__list span { color: var(--muted); white-space: nowrap; font-size: 0.85rem; }
+
+/* Tableau d'inspirations (mosaïque) */
+.mood {
+  columns: 3;
+  column-gap: clamp(0.75rem, 2vw, 1.25rem);
+}
+.mood__item {
+  break-inside: avoid;
+  margin: 0 0 clamp(0.75rem, 2vw, 1.25rem);
+}
+.mood__item img { width: 100%; height: auto; display: block; }
+.mood__item figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--muted);
+}
+.mood__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--stone);
+  border: 1px dashed rgba(91, 31, 76, 0.28);
+  color: var(--plum);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
 /* ==========================================================================
    Réponse (RSVP)
    ========================================================================== */
@@ -739,6 +942,9 @@ em { font-style: italic; }
   .infos { grid-template-columns: 1fr; }
 
   .places { grid-template-columns: 1fr; }
+
+  .feature { grid-template-columns: 1fr; }
+  .mood { columns: 2; }
 
   .choices { grid-template-columns: 1fr; }
 

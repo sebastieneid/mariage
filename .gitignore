@@ -3,3 +3,5 @@ CLAUDE.md
 .style_*.css
 .index_*.html
 .DS_Store
+_sources/
+.script_*.js
