@@ -494,8 +494,7 @@ em { font-style: italic; }
 /* Infos pratiques */
 .infos {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 clamp(2.5rem, 7vw, 6rem);
+  grid-template-columns: minmax(0, 1fr);
   max-width: 60rem;
 }
 
@@ -512,7 +511,7 @@ em { font-style: italic; }
   margin-bottom: 0.85rem;
 }
 
-.info p { color: var(--muted); }
+.info p { color: var(--muted); max-width: 38rem; }
 
 /* Blocs pleine largeur : Dormir (carte) et S'habiller (inspirations) */
 .feature {
@@ -536,6 +535,9 @@ em { font-style: italic; }
   margin-bottom: 0.85rem;
 }
 .feature__text > p { color: var(--muted); }
+
+.feature__airbnb { margin-top: 1.5rem; color: var(--muted); }
+.feature__airbnb + .link { margin-top: 0.9rem; }
 
 .feature__note {
   margin-top: 1.5rem;
