@@ -1,0 +1,5 @@
+# Fichiers de travail, gardés en local uniquement
+CLAUDE.md
+.style_*.css
+.index_*.html
+.DS_Store
